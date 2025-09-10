@@ -7,22 +7,15 @@
 | cat-large-item1.jpg     | 627x814        | 800x400px          | Large category                    | https://themewagon.github.io/kaira/images/cat-large-item1.jpg |
 | cat-sm-item.jpg         | 627x465        | 200x200px          | Small category                    | https://themewagon.github.io/kaira/images/cat-sm-item.jpg  |
 | collection-banner.jpg   | 1405x1000      | 1200x400px         | Collection banner                 | https://themewagon.github.io/kaira/images/collection-banner.jpg |
-| dhl-logo.png            | 60x24          | 40x40px            | Payment logo                      | https://themewagon.github.io/kaira/images/dhl-logo.png     |
 | insta-item1.jpg         | 400x400        | 300x300px          | Instagram gallery                 | https://themewagon.github.io/kaira/images/insta-item1.jpg  |
 | light-logo.png          | 112x45         | 112x45px           | Header logo                       | https://themewagon.github.io/kaira/images/light-logo.png   |
-| logo1.png               | 148x43         | 120x40px           | Logo bar/footer                   | https://themewagon.github.io/kaira/images/logo1.png        |
 | main-logo.png           | 110x26         | 112x45px           | Main logo                         | https://themewagon.github.io/kaira/images/main-logo.png    |
-| master-card.png         | 30x24          | 40x40px            | Payment logo                      | https://themewagon.github.io/kaira/images/master-card.png  |
 | newsletter-image.jpg    | 1920x470       | 1200x400px         | Newsletter image                  | https://themewagon.github.io/kaira/images/newsletter-image.jpg |
-| pattern-bg.png          | 1920x503       | 1200x400px         | Pattern background                | https://themewagon.github.io/kaira/images/pattern-bg.png   |
-| paypal-card.png         | 29x24          | 40x40px            | Payment logo                      | https://themewagon.github.io/kaira/images/paypal-card.png  |
 | post-image1.jpg         | 460x292        | 400x400px          | Blog post grid                    | https://themewagon.github.io/kaira/images/post-image1.jpg  |
 | post-large-image1.jpg   | 1060x673       | 800x400px          | Large blog post                   | https://themewagon.github.io/kaira/images/post-large-image1.jpg |
 | post-small-image1.jpg   | 123x116        | 200x200px          | Small blog post                   | https://themewagon.github.io/kaira/images/post-small-image1.jpg |
 | product-item-1.jpg      | 704x956        | 400x500px          | Product grid/carousel             | https://themewagon.github.io/kaira/images/product-item-1.jpg |
 | single-image-2.jpg      | 1404x1372      | 800x1000px         | Product detail/feature            | https://themewagon.github.io/kaira/images/single-image-2.jpg |
-| text-pattern.png        | 248x248        | 300x80px           | Text pattern                      | https://themewagon.github.io/kaira/images/text-pattern.png |
 | video-image.jpg         | 1920x898       | 1200x600px         | Video section                     | https://themewagon.github.io/kaira/images/video-image.jpg  |
-| visa-card.png           | 30x24          | 40x40px            | Payment logo                      | https://themewagon.github.io/kaira/images/visa-card.png    |
 | wishlist-item1.jpg      | 121x164        | 200x200px          | Wishlist item                     | https://themewagon.github.io/kaira/images/wishlist-item1.jpg |
 ---
