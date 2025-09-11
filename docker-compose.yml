@@ -1,0 +1,64 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: grahasthee-backend:dev
+    container_name: grahasthee-backend
+    restart: unless-stopped
+    environment:
+      - APP_ENV=local
+      - APP_KEY=base64:your_app_key_here
+      - DB_HOST=db
+      - DB_DATABASE=grahasthee
+      - DB_USERNAME=grahasthee
+      - DB_PASSWORD=grahasthee
+    volumes:
+      - ./backend:/var/www/html
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - grahasthee-net
+    command: ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: grahasthee-frontend:dev
+    container_name: grahasthee-frontend
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "5173:5173"
+    networks:
+      - grahasthee-net
+    command: ["npm", "run", "dev"]
+
+  db:
+    image: mysql:8.0
+    container_name: grahasthee-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: grahasthee
+      MYSQL_USER: grahasthee
+      MYSQL_PASSWORD: grahasthee
+      MYSQL_ROOT_PASSWORD: rootpassword
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - grahasthee-net
+
+volumes:
+  db_data:
+
+networks:
+  grahasthee-net:
+    driver: bridge
