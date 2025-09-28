@@ -4,15 +4,15 @@
         <div class="col-md-3 col-sm-6">
           <div class="footer-menu footer-menu-001">
             <div class="footer-intro mb-4">
-              <a href="index.html">
-                <img src="{{ asset('assets/images/main-logo.png') }}" alt="logo">
+              <a href="{{ url('/') }}">
+                <img src="{{ asset('assets/images/logo.png') }}" alt="logo" width="120">
               </a>
             </div>
-            <p>Gravida massa volutpat aenean odio. Amet, turpis erat nullam fringilla elementum diam in. Nisi, purus
-              vitae, ultrices nunc. Sit ac sit suscipit hendrerit.</p>
+            {{-- <p>Gravida massa volutpat aenean odio. Amet, turpis erat nullam fringilla elementum diam in. Nisi, purus
+              vitae, ultrices nunc. Sit ac sit suscipit hendrerit.</p> --}}
             <div class="social-links">
               <ul class="list-unstyled d-flex flex-wrap gap-3">
-                <li>
+                {{-- <li>
                   <a href="#" class="text-secondary">
                     <svg width="24" height="24" viewBox="0 0 24 24">
                       <use xlink:href="#facebook"></use>
@@ -39,9 +39,9 @@
                       <use xlink:href="#pinterest"></use>
                     </svg>
                   </a>
-                </li>
+                </li> --}}
                 <li>
-                  <a href="#" class="text-secondary">
+                  <a href="https://www.instagram.com/grahasthee" class="text-secondary" target="_blank">
                     <svg width="24" height="24" viewBox="0 0 24 24">
                       <use xlink:href="#instagram"></use>
                     </svg>
@@ -51,12 +51,12 @@
             </div>
           </div>
         </div>
-        <div class="col-md-3 col-sm-6">
+        {{-- <div class="col-md-3 col-sm-6">
           <div class="footer-menu footer-menu-002">
             <h5 class="widget-title text-uppercase mb-4">Quick Links</h5>
             <ul class="menu-list list-unstyled text-uppercase border-animation-left fs-6">
               <li class="menu-item">
-                <a href="index.html" class="item-anchor">Home</a>
+                <a href="{{ url('/') }}" class="item-anchor">Home</a>
               </li>
               <li class="menu-item">
                 <a href="shop-four-column-wide.html" class="item-anchor">About</a>
@@ -72,8 +72,8 @@
               </li>
             </ul>
           </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
+        </div> --}}
+        {{-- <div class="col-md-3 col-sm-6">
           <div class="footer-menu footer-menu-003">
             <h5 class="widget-title text-uppercase mb-4">Help & Info</h5>
             <ul class="menu-list list-unstyled text-uppercase border-animation-left fs-6">
@@ -97,13 +97,13 @@
               </li>
             </ul>
           </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
+        </div> --}}
+        <div class="col-md-6 col-sm-6">
           <div class="footer-menu footer-menu-004 border-animation-left">
             <h5 class="widget-title text-uppercase mb-4">Contact Us</h5>
-            <p>Do you have any questions or suggestions? <a href="mailto:contact@yourcompany.com"
-                class="item-anchor">contact@yourcompany.com</a></p>
-            <p>Do you need support? Give us a call. <a href="tel:+43 720 11 52 78" class="item-anchor">+43 720 11 52
+            <p>Do you have any questions or suggestions? <a href="mailto:grahasthee@gmail.com"
+                class="item-anchor">grahasthee@gmail.com</a></p>
+            <p>Do you need support? Give us a call. <a href="tel:+917470652857" class="item-anchor">+917470652857
                 78</a>
             </p>
           </div>
@@ -113,7 +113,7 @@
     <div class="border-top py-4">
       <div class="container">
         <div class="row">
-          <div class="col-md-6 d-flex flex-wrap">
+          {{-- <div class="col-md-6 d-flex flex-wrap">
             <div class="shipping">
               <span>We ship with:</span>
               <img src="{{ asset('assets/images/arct-icon.png') }}" alt="icon">
@@ -125,9 +125,9 @@
               <img src="{{ asset('assets/images/paypal-card.png') }}" alt="card">
               <img src="{{ asset('assets/images/master-card.png') }}" alt="card">
             </div>
-          </div>
-          <div class="col-md-6 text-end">
-            <p>© Copyright 2022 Kaira. All rights reserved. Design by <a href="https://templatesjungle.com"
+          </div> --}}
+          <div class="col-md-6 mx-auto">
+            <p>© Copyright 2025 Grahasthee. All rights reserved. Design by <a href="https://templatesjungle.com"
                 target="_blank">TemplatesJungle</a></p>
           </div>
         </div>
