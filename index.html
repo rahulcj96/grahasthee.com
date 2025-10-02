@@ -22,193 +22,6 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Marcellus&display=swap"
     rel="stylesheet">
-<script id="browser-logger-active">
-(function() {
-    const ENDPOINT = 'https://grahasthee.com/_boost/browser-logs';
-    const logQueue = [];
-    let flushTimeout = null;
-
-    console.log('🔍 Browser logger active (MCP server detected). Posting to: ' + ENDPOINT);
-
-    // Store original console methods
-    const originalConsole = {
-        log: console.log,
-        info: console.info,
-        error: console.error,
-        warn: console.warn,
-        table: console.table
-    };
-
-    // Helper to safely stringify values
-    function safeStringify(obj) {
-        const seen = new WeakSet();
-        return JSON.stringify(obj, (key, value) => {
-            if (typeof value === 'object' && value !== null) {
-                if (seen.has(value)) return '[Circular]';
-                seen.add(value);
-            }
-            if (value instanceof Error) {
-                return {
-                    name: value.name,
-                    message: value.message,
-                    stack: value.stack
-                };
-            }
-            return value;
-        });
-    }
-
-    // Batch and send logs
-    function flushLogs() {
-        if (logQueue.length === 0) return;
-
-        const batch = logQueue.splice(0, logQueue.length);
-
-        fetch(ENDPOINT, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
-            },
-            body: JSON.stringify({ logs: batch })
-        }).catch(err => {
-            // Silently fail to avoid infinite loops
-            originalConsole.error('Failed to send logs:', err);
-        });
-    }
-
-    // Debounced flush (100ms)
-    function scheduleFlush() {
-        if (flushTimeout) clearTimeout(flushTimeout);
-        flushTimeout = setTimeout(flushLogs, 100);
-    }
-
-    // Intercept console methods
-    ['log', 'info', 'error', 'warn', 'table'].forEach(method => {
-        console[method] = function(...args) {
-            // Call original method
-            originalConsole[method].apply(console, args);
-
-            // Capture log data
-            try {
-                logQueue.push({
-                    type: method,
-                    timestamp: new Date().toISOString(),
-                    data: args.map(arg => {
-                        try {
-                            return typeof arg === 'object' ? JSON.parse(safeStringify(arg)) : arg;
-                        } catch (e) {
-                            return String(arg);
-                        }
-                    }),
-                    url: window.location.href,
-                    userAgent: navigator.userAgent
-                });
-
-                scheduleFlush();
-            } catch (e) {
-                // Fail silently
-            }
-        };
-    });
-
-    // Global error handlers for uncaught errors
-    const originalOnError = window.onerror;
-    window.onerror = function boostErrorHandler(errorMsg, url, lineNumber, colNumber, error) {
-        try {
-            logQueue.push({
-                type: 'uncaught_error',
-                timestamp: new Date().toISOString(),
-                data: [{
-                    message: errorMsg,
-                    filename: url,
-                    lineno: lineNumber,
-                    colno: colNumber,
-                    error: error ? {
-                        name: error.name,
-                        message: error.message,
-                        stack: error.stack
-                    } : null
-                }],
-                url: window.location.href,
-                userAgent: navigator.userAgent
-            });
-
-            scheduleFlush();
-        } catch (e) {
-            // Fail silently
-        }
-
-        // Call original handler if it exists
-        if (originalOnError && typeof originalOnError === 'function') {
-            return originalOnError(errorMsg, url, lineNumber, colNumber, error);
-        }
-
-        // Let the error continue to propagate
-        return false;
-    }
-    window.addEventListener('error', (event) => {
-        try {
-            logQueue.push({
-                type: 'window_error',
-                timestamp: new Date().toISOString(),
-                data: [{
-                    message: event.message,
-                    filename: event.filename,
-                    lineno: event.lineno,
-                    colno: event.colno,
-                    error: event.error ? {
-                        name: event.error.name,
-                        message: event.error.message,
-                        stack: event.error.stack
-                    } : null
-                }],
-                url: window.location.href,
-                userAgent: navigator.userAgent
-            });
-
-            scheduleFlush();
-        } catch (e) {
-            // Fail silently
-        }
-
-        // Let the error continue to propagate
-        return false;
-    });
-    window.addEventListener('unhandledrejection', (event) => {
-        try {
-            logQueue.push({
-                type: 'error',
-                timestamp: new Date().toISOString(),
-                data: [{
-                    message: 'Unhandled Promise Rejection',
-                    reason: event.reason instanceof Error ? {
-                        name: event.reason.name,
-                        message: event.reason.message,
-                        stack: event.reason.stack
-                    } : event.reason
-                }],
-                url: window.location.href,
-                userAgent: navigator.userAgent
-            });
-
-            scheduleFlush();
-        } catch (e) {
-            // Fail silently
-        }
-
-        // Let the rejection continue to propagate
-        return false;
-    });
-
-    // Flush on page unload
-    window.addEventListener('beforeunload', () => {
-        if (logQueue.length > 0) {
-            navigator.sendBeacon(ENDPOINT, JSON.stringify({ logs: logQueue }));
-        }
-    });
-})();
-</script>
 </head>
 
 <body class="homepage">
@@ -679,7 +492,7 @@
                 
                 <div class="product-content">
                   <h5 class="element-title text-uppercase fs-5 mt-3">
-                    <a href="#">Dark florish onepiece</a>
+                    <a href="#">Textured Handloom Cushion Cover</a>
                   </h5>
                   
                 </div>
@@ -695,7 +508,7 @@
                 
                 <div class="product-content">
                   <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="#">Baggy Shirt</a>
+                    <a href="#">Artisan Embroidered Pillow Cover</a>
                   </h5>
                   
                 </div>
@@ -708,12 +521,10 @@
                 <a href="#">
                   <img src="https://grahasthee.com/assets/images/new-arrivals/pillow-3.png" alt="categories" class="product-image img-fluid">
                 </a>
-                
                 <div class="product-content">
                   <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="#">Cotton off-white shirt</a>
+                    <a href="#">Botanical Stitch Cushion Cover</a>
                   </h5>
-                  
                 </div>
               </div>
             </div>
@@ -724,12 +535,10 @@
                 <a href="#">
                   <img src="https://grahasthee.com/assets/images/new-arrivals/pillow-4.png" alt="categories" class="product-image img-fluid">
                 </a>
-                
                 <div class="product-content">
                   <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="#">Crop sweater</a>
+                    <a href="#">Cosmic Embroidery Linen Pillow Cover</a>
                   </h5>
-                  
                 </div>
               </div>
             </div>
@@ -743,7 +552,7 @@
                 
                 <div class="product-content">
                   <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="#">Crop sweater</a>
+                    <a href="#">Basketweave Tassel Cushion Cover</a>
                   </h5>
                   
                 </div>
@@ -804,7 +613,7 @@
                 
                 <div class="product-content">
                   <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="#">Dark florish onepiece</a>
+                    <a href="#">Solid Mint Green Towel</a>
                   </h5>
                   
                 </div>
@@ -820,7 +629,7 @@
                 
                 <div class="product-content">
                   <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="#">Baggy Shirt</a>
+                    <a href="#">Grey Scalloped Bath Mat</a>
                   </h5>
                   
                 </div>
@@ -836,7 +645,7 @@
                 
                 <div class="product-content">
                   <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="#">Cotton off-white shirt</a>
+                    <a href="#">Lightweight Turkish Bath Towel</a>
                   </h5>
                   
                 </div>
@@ -852,7 +661,7 @@
                 
                 <div class="product-content">
                   <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="#">Handmade crop sweater</a>
+                    <a href="#">Woven Storage Basket Set</a>
                   </h5>
                   
                 </div>
@@ -868,7 +677,7 @@
                 
                 <div class="product-content">
                   <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="#">Dark florish onepiece</a>
+                    <a href="#">Artisan Woven Throw Blanket</a>
                   </h5>
                   
                 </div>
@@ -884,7 +693,7 @@
                 
                 <div class="product-content">
                   <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="#">Cotton off-white shirt</a>
+                    <a href="#">Hand-Knotted Accent Rug</a>
                   </h5>
                   
                 </div>
@@ -981,7 +790,7 @@
                 
                 <div class="product-content">
                   <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="#">Dark florish onepiece</a>
+                    <a href="#">Honeycomb Weave Kitchen Towel</a>
                   </h5>
                   
                 </div>
@@ -997,7 +806,7 @@
                 
                 <div class="product-content">
                   <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="#">Baggy Shirt</a>
+                    <a href="#">Vintage-Inspired Printed Area Rug</a>
                   </h5>
                   
                 </div>
@@ -1013,7 +822,7 @@
                 
                 <div class="product-content">
                   <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="#">Cotton off-white shirt</a>
+                    <a href="#">Braided Cotton Storage Baskets (Set of 3)</a>
                   </h5>
                   
                 </div>
@@ -1029,7 +838,7 @@
                 
                 <div class="product-content">
                   <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="#">Handmade crop sweater</a>
+                    <a href="#">Textured Coral Tea Towel</a>
                   </h5>
                   
                 </div>
@@ -1045,7 +854,7 @@
                 
                 <div class="product-content">
                   <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="#">Handmade crop sweater</a>
+                    <a href="#">Earthy Floral Accent Mat</a>
                   </h5>
                   
                 </div>
