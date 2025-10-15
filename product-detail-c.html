@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Product - Grahasthee</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://grahasthee.com/assets/css/vendor.css">
+  <link rel="stylesheet" type="text/css" href="https://grahasthee.com/assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;700&family=Marcellus&display=swap" rel="stylesheet">
+
+  <style>
+    .product-gallery img {
+      border-radius: 10px;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+    .product-gallery img:hover {
+      opacity: 0.8;
+    }
+    .thumbs img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border: 1px solid #eee;
+      border-radius: 6px;
+    }
+    .price {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+    .tab-content p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body class="product-detail">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-light text-uppercase fs-6 p-3 border-bottom">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="https://grahasthee.com/assets/images/logo.webp" alt="Logo" width="120">
+      </a>
+      <div class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav gap-4">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="#footer">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Product Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-5 align-items-start">
+        <!-- Gallery -->
+        <div class="col-md-6">
+          <div class="product-gallery">
+            <img id="mainImage" src="https://grahasthee.com/assets/images/new-arrivals/pillow-1.webp" class="img-fluid mb-3" alt="Product Image">
+            <div class="thumbs d-flex gap-3">
+              <img src="https://grahasthee.com/assets/images/new-arrivals/pillow-1.webp" onclick="changeImage(this)" alt="">
+              <img src="https://grahasthee.com/assets/images/new-arrivals/pillow-2.webp" onclick="changeImage(this)" alt="">
+              <img src="https://grahasthee.com/assets/images/new-arrivals/pillow-3.webp" onclick="changeImage(this)" alt="">
+            </div>
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="col-md-6">
+          <h2 class="text-uppercase fs-3">Textured Handloom Cushion Cover</h2>
+          <p class="price">₹799</p>
+          <p class="mt-3 text-muted">
+            Crafted with 100% pure cotton, this handloom cushion cover brings texture, warmth, and character to your space.
+            Each piece is uniquely woven by artisans using traditional looms.
+          </p>
+
+          <div class="d-flex gap-3 my-4">
+            <button class="btn btn-dark px-4 py-2 text-uppercase">Add to Cart</button>
+            <button class="btn btn-outline-dark px-4 py-2 text-uppercase">Buy Now</button>
+          </div>
+
+          <ul class="nav nav-tabs mt-5" id="productTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="desc-tab" data-bs-toggle="tab" data-bs-target="#desc" type="button" role="tab">
+                Description
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="care-tab" data-bs-toggle="tab" data-bs-target="#care" type="button" role="tab">
+                Care Instructions
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content pt-3" id="productTabsContent">
+            <div class="tab-pane fade show active" id="desc" role="tabpanel">
+              <p>
+                Our textured handloom cushion cover is carefully crafted from natural cotton fibers. 
+                Its minimalist design complements both modern and traditional interiors. Each piece is handmade, 
+                ensuring slight variations that make your product truly one-of-a-kind.
+              </p>
+            </div>
+            <div class="tab-pane fade" id="care" role="tabpanel">
+              <p>
+                Machine wash in cold water with mild detergent. Do not bleach. Tumble dry low or line dry in shade. 
+                Iron on low heat if needed. Handwoven fabrics may soften with use — this is part of their charm.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- You May Also Like -->
+  <section class="related-products bg-light py-5">
+    <div class="container">
+      <h4 class="text-uppercase mb-4 text-center">You May Also Like</h4>
+      <div class="row g-4">
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="text-center image-zoom-effect">
+            <img src="https://grahasthee.com/assets/images/new-arrivals/pillow-2.webp" class="img-fluid" alt="">
+            <h6 class="text-uppercase mt-3">Embroidered Pillow Cover</h6>
+            <p class="text-muted small">₹899</p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="text-center image-zoom-effect">
+            <img src="https://grahasthee.com/assets/images/best-sellers/bath-towel-1.webp" class="img-fluid" alt="">
+            <h6 class="text-uppercase mt-3">Luxe Linen Bath Towel</h6>
+            <p class="text-muted small">₹1,299</p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="text-center image-zoom-effect">
+            <img src="https://grahasthee.com/assets/images/best-sellers/basket.webp" class="img-fluid" alt="">
+            <h6 class="text-uppercase mt-3">Woven Storage Basket Set</h6>
+            <p class="text-muted small">₹1,499</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer" class="bg-light text-center py-4 border-top">
+    <p class="mb-0 small text-muted">© 2025 Grahasthee — Stories for Every Corner.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function changeImage(el) {
+      document.getElementById('mainImage').src = el.src;
+    }
+  </script>
+</body>
+</html>
